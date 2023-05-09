@@ -17,6 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from rest_framework import routers
+
+from . import views
+
+router = routers.DefaultRouter()
+router.register("epcs", views.EPCViewSet)
+
 urlpatterns = [
     path("admin/", admin.site.urls),
-]
+] + router.urls
